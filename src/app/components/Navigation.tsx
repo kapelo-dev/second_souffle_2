@@ -63,13 +63,19 @@ export default function Navigation() {
 
         {/* Bouton hamburger */}
         <button 
-          className="flex flex-col md:hidden justify-center items-center w-8 h-8 space-y-1.5"
+          className="flex flex-col md:hidden justify-center items-center w-8 h-8 space-y-1.5 relative"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Menu"
         >
-          <span className="w-6 h-0.5 bg-black transition-all"></span>
-          <span className="w-6 h-0.5 bg-black transition-all"></span>
-          <span className="w-6 h-0.5 bg-black transition-all"></span>
+          <span className={`w-6 h-0.5 bg-black transition-all absolute ${
+            isMenuOpen ? 'rotate-45 translate-y-0' : ''
+          }`}></span>
+          <span className={`w-6 h-0.5 bg-black transition-all ${
+            isMenuOpen ? 'opacity-0' : ''
+          }`}></span>
+          <span className={`w-6 h-0.5 bg-black transition-all absolute ${
+            isMenuOpen ? '-rotate-45 translate-y-0' : ''
+          }`}></span>
         </button>
       </div>
 
