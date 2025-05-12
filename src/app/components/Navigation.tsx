@@ -11,8 +11,8 @@ export default function Navigation() {
   return (
     <nav className="fixed top-0 w-full bg-custom-bg z-50 border-b border-[#E5E5E5]">
       <div className="container h-20 flex justify-between items-center">
-        {/* Logo et liens principaux */}
-        <div className="flex items-center gap-8">
+        {/* Logo */}
+        <div className="flex items-center">
           <Link 
             href="/" 
             className={`text-3xl font-sans font-semibold tracking-tight ${
@@ -21,53 +21,31 @@ export default function Navigation() {
           >
             Second Souffle
           </Link>
-          
-          {/* Menu hamburger pour mobile */}
-          <button 
-            className="md:hidden text-black"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            <svg 
-              className="w-6 h-6" 
-              fill="none" 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
-              strokeWidth="2" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor"
-            >
-              {isMenuOpen ? (
-                <path d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
-          </button>
-
-          {/* Menu desktop */}
-          <div className="hidden md:flex gap-8 text-lg">
-            <Link 
-              href="/pourquoi-art" 
-              className={`nav-link ${pathname === '/pourquoi-art' ? 'nav-link-active' : ''}`}
-            >
-              Pourquoi l'art
-            </Link>
-            <Link 
-              href="/pourquoi-second-souffle" 
-              className={`nav-link ${pathname === '/pourquoi-second-souffle' ? 'nav-link-active' : ''}`}
-            >
-              Pourquoi Second Souffle
-            </Link>
-            <Link 
-              href="/nos-services" 
-              className={`nav-link ${pathname === '/nos-services' ? 'nav-link-active' : ''}`}
-            >
-              Nos services
-            </Link>
-          </div>
         </div>
 
-        {/* Liens secondaires */}
+        {/* Menu desktop */}
+        <div className="hidden md:flex items-center gap-8">
+          <Link 
+            href="/pourquoi-art" 
+            className={`nav-link ${pathname === '/pourquoi-art' ? 'nav-link-active' : ''}`}
+          >
+            Pourquoi l'art
+          </Link>
+          <Link 
+            href="/pourquoi-second-souffle" 
+            className={`nav-link ${pathname === '/pourquoi-second-souffle' ? 'nav-link-active' : ''}`}
+          >
+            Pourquoi Second Souffle
+          </Link>
+          <Link 
+            href="/nos-services" 
+            className={`nav-link ${pathname === '/nos-services' ? 'nav-link-active' : ''}`}
+          >
+            Nos services
+          </Link>
+        </div>
+
+        {/* Liens secondaires desktop */}
         <div className="hidden md:flex items-center gap-6">
           <Link 
             href="/devenir-partenaire" 
@@ -82,6 +60,29 @@ export default function Navigation() {
             INVESTIR
           </Link>
         </div>
+
+        {/* Bouton hamburger */}
+        <button 
+          className="block md:hidden text-black"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Menu"
+        >
+          <svg 
+            className="w-8 h-8" 
+            fill="none" 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            strokeWidth="2" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor"
+          >
+            {isMenuOpen ? (
+              <path d="M6 18L18 6M6 6l12 12" />
+            ) : (
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            )}
+          </svg>
+        </button>
       </div>
 
       {/* Menu mobile */}
