@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from 'react'
-import { usePathname } from 'next/navigation'
 
 const images = [
   '/ss1.jpeg',
@@ -15,7 +14,6 @@ const images = [
 
 export default function Home() {
   const [activeIndex, setActiveIndex] = useState(0)
-  const pathname = usePathname()
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -27,31 +25,6 @@ export default function Home() {
 
   return (
     <main className="min-h-screen">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-[#FAF9F6] z-50 px-8 border-b border-[#E5E5E5]">
-        <div className="max-w-7xl mx-auto flex justify-between items-center h-20">
-          {/* Logo */}
-          <div className="flex items-center gap-12">
-            <Link 
-              href="/" 
-              className={`text-3xl font-sans font-semibold tracking-tight ${pathname === '/' ? 'text-amber-400' : 'text-black'} hover:text-amber-400`}
-            >
-              Second Souffle
-            </Link>
-            <div className="hidden md:flex gap-8 text-lg">
-              <Link href="/pourquoi-art" className="text-black hover:text-amber-400 transition-colors">Pourquoi l'art</Link>
-              <Link href="/pourquoi-second-souffle" className="text-black hover:text-amber-400 transition-colors">Pourquoi Second Souffle</Link>
-              <Link href="/nos-services" className="text-black hover:text-amber-400 transition-colors">Nos services</Link>
-            </div>
-          </div>
-          {/* Liens secondaires */}
-          <div className="flex items-center gap-6">
-            <Link href="/devenir-partenaire" className="text-black hover:text-amber-400 transition-colors text-lg">Devenir partenaire</Link>
-            <Link href="/investir" className="bg-black text-white px-6 py-2 text-lg font-semibold rounded-none hover:bg-amber-400 transition-colors" style={{boxShadow:'none'}}>INVESTIR</Link>
-          </div>
-        </div>
-      </nav>
-
       {/* Hero Section avec fond blanc cassé/kaki */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-[#F5F2EA]">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -82,8 +55,8 @@ export default function Home() {
                     opacity: index === activeIndex ? 1 : 0,
                     zIndex: index === activeIndex ? 1 : 0
                   }}
-          >
-            <Image
+                >
+                  <Image
                     src={image}
                     alt={`Production audiovisuelle ${index + 1}`}
                     fill
@@ -334,7 +307,7 @@ export default function Home() {
             </div>
             {/* Images défilantes */}
             <div className="relative h-[600px] overflow-hidden rounded-lg">
-          <Image
+              <Image
                 src="/ss.jpeg"
                 alt="Notre approche"
                 fill
@@ -451,8 +424,8 @@ export default function Home() {
               <div className="flex gap-4">
                 <Link 
                   href="https://www.instagram.com/fonds_de_dotation_s2production/" 
-          target="_blank"
-          rel="noopener noreferrer"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-black hover:text-amber-400 transition-transform hover:scale-110 duration-300"
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -461,8 +434,8 @@ export default function Home() {
                 </Link>
                 <Link 
                   href="https://www.linkedin.com/company/secondsouffle-production/" 
-          target="_blank"
-          rel="noopener noreferrer"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-black hover:text-amber-400 transition-transform hover:scale-110 duration-300"
                 >
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
