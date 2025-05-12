@@ -59,34 +59,22 @@ export default function Navigation() {
           </Link>
         </div>
 
-        {/* Navigation mobile */}
-        <div className="flex md:hidden items-center gap-4">
-          <Link 
-            href="/investir" 
-            className="btn-primary text-sm"
-          >
-            INVESTIR
-          </Link>
-          
-          {/* Bouton hamburger */}
-          <button 
-            className="flex flex-col justify-center items-center w-8 h-8 z-50"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Menu"
-          >
-            <div className="flex flex-col justify-center items-center gap-1.5">
-              <span className={`w-6 h-0.5 bg-black transition-all ${
-                isMenuOpen ? 'rotate-45 translate-y-2' : ''
-              }`}></span>
-              <span className={`w-6 h-0.5 bg-black transition-all ${
-                isMenuOpen ? 'opacity-0' : ''
-              }`}></span>
-              <span className={`w-6 h-0.5 bg-black transition-all ${
-                isMenuOpen ? '-rotate-45 -translate-y-2' : ''
-              }`}></span>
-            </div>
-          </button>
-        </div>
+        {/* Bouton hamburger */}
+        <button 
+          className="flex md:hidden flex-col justify-center items-center w-8 h-8 z-50"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="Menu"
+        >
+          <span className={`w-6 h-0.5 bg-black transition-all ${
+            isMenuOpen ? 'rotate-45 translate-y-2' : ''
+          }`}></span>
+          <span className={`w-6 h-0.5 bg-black transition-all my-1 ${
+            isMenuOpen ? 'opacity-0' : ''
+          }`}></span>
+          <span className={`w-6 h-0.5 bg-black transition-all ${
+            isMenuOpen ? '-rotate-45 -translate-y-2' : ''
+          }`}></span>
+        </button>
       </div>
 
       {/* Menu mobile */}
@@ -120,6 +108,13 @@ export default function Navigation() {
               onClick={() => setIsMenuOpen(false)}
             >
               Devenir partenaire
+            </Link>
+            <Link 
+              href="/investir" 
+              className="btn-primary text-lg text-center"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              INVESTIR
             </Link>
           </div>
         </div>
