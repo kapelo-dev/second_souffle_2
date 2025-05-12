@@ -10,12 +10,12 @@ export default function Navigation() {
 
   return (
     <nav className="fixed top-0 w-full bg-custom-bg z-50 border-b border-[#E5E5E5]">
-      <div className="container h-20 flex justify-between items-center">
+      <div className="container h-20 flex justify-between items-center relative px-4">
         {/* Logo */}
         <div className="flex items-center">
           <Link 
             href="/" 
-            className={`text-3xl font-sans font-semibold tracking-tight ${
+            className={`text-2xl md:text-3xl font-sans font-semibold tracking-tight ${
               pathname === '/' ? 'text-accent' : 'text-custom-text'
             } hover:text-accent transition-colors duration-300`}
           >
@@ -63,7 +63,7 @@ export default function Navigation() {
 
         {/* Bouton hamburger */}
         <button 
-          className="block md:hidden text-black"
+          className="flex md:hidden items-center justify-center p-2 rounded-lg text-black hover:bg-gray-100 transition-colors absolute right-4 top-1/2 transform -translate-y-1/2"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Menu"
         >
@@ -87,39 +87,39 @@ export default function Navigation() {
 
       {/* Menu mobile */}
       {isMenuOpen && (
-        <div className="md:hidden bg-custom-bg border-t border-[#E5E5E5]">
-          <div className="container py-4 flex flex-col gap-4">
+        <div className="absolute top-20 left-0 right-0 md:hidden bg-custom-bg border-t border-[#E5E5E5] shadow-lg">
+          <div className="container py-4 flex flex-col gap-4 px-4">
             <Link 
               href="/pourquoi-art" 
-              className={`nav-link ${pathname === '/pourquoi-art' ? 'nav-link-active' : ''}`}
+              className={`nav-link text-lg ${pathname === '/pourquoi-art' ? 'nav-link-active' : ''}`}
               onClick={() => setIsMenuOpen(false)}
             >
               Pourquoi l'art
             </Link>
             <Link 
               href="/pourquoi-second-souffle" 
-              className={`nav-link ${pathname === '/pourquoi-second-souffle' ? 'nav-link-active' : ''}`}
+              className={`nav-link text-lg ${pathname === '/pourquoi-second-souffle' ? 'nav-link-active' : ''}`}
               onClick={() => setIsMenuOpen(false)}
             >
               Pourquoi Second Souffle
             </Link>
             <Link 
               href="/nos-services" 
-              className={`nav-link ${pathname === '/nos-services' ? 'nav-link-active' : ''}`}
+              className={`nav-link text-lg ${pathname === '/nos-services' ? 'nav-link-active' : ''}`}
               onClick={() => setIsMenuOpen(false)}
             >
               Nos services
             </Link>
             <Link 
               href="/devenir-partenaire" 
-              className={`nav-link ${pathname === '/devenir-partenaire' ? 'nav-link-active' : ''}`}
+              className={`nav-link text-lg ${pathname === '/devenir-partenaire' ? 'nav-link-active' : ''}`}
               onClick={() => setIsMenuOpen(false)}
             >
               Devenir partenaire
             </Link>
             <Link 
               href="/investir" 
-              className="btn-primary inline-block text-center"
+              className="btn-primary inline-block text-center text-lg"
               onClick={() => setIsMenuOpen(false)}
             >
               INVESTIR
