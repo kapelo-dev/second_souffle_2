@@ -10,20 +10,18 @@ export default function Navigation() {
 
   return (
     <nav className="fixed top-0 w-full bg-custom-bg z-50 border-b border-[#E5E5E5]">
-      <div className="container h-20 flex justify-between items-center relative px-4">
+      <div className="container mx-auto h-20 flex items-center justify-between px-4">
         {/* Logo */}
-        <div className="flex items-center">
-          <Link 
-            href="/" 
-            className={`text-2xl md:text-3xl font-sans font-semibold tracking-tight ${
-              pathname === '/' ? 'text-accent' : 'text-custom-text'
-            } hover:text-accent transition-colors duration-300`}
-          >
-            Second Souffle
-          </Link>
-        </div>
+        <Link 
+          href="/" 
+          className={`text-2xl md:text-3xl font-sans font-semibold tracking-tight ${
+            pathname === '/' ? 'text-accent' : 'text-custom-text'
+          } hover:text-accent transition-colors duration-300`}
+        >
+          Second Souffle
+        </Link>
 
-        {/* Menu desktop */}
+        {/* Navigation desktop */}
         <div className="hidden md:flex items-center gap-8">
           <Link 
             href="/pourquoi-art" 
@@ -61,30 +59,40 @@ export default function Navigation() {
           </Link>
         </div>
 
-        {/* Bouton hamburger */}
-        <button 
-          className="block md:hidden z-50 relative w-8 h-8"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Menu"
-        >
-          <div className="absolute inset-0 flex flex-col justify-center items-center gap-1.5">
-            <span className={`w-6 h-0.5 bg-black transition-all ${
-              isMenuOpen ? 'rotate-45 translate-y-[7px]' : ''
-            }`}></span>
-            <span className={`w-6 h-0.5 bg-black transition-all ${
-              isMenuOpen ? 'opacity-0' : ''
-            }`}></span>
-            <span className={`w-6 h-0.5 bg-black transition-all ${
-              isMenuOpen ? '-rotate-45 -translate-y-[7px]' : ''
-            }`}></span>
-          </div>
-        </button>
+        {/* Navigation mobile */}
+        <div className="flex md:hidden items-center gap-4">
+          <Link 
+            href="/investir" 
+            className="btn-primary text-sm"
+          >
+            INVESTIR
+          </Link>
+          
+          {/* Bouton hamburger */}
+          <button 
+            className="flex flex-col justify-center items-center w-8 h-8 z-50"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Menu"
+          >
+            <div className="flex flex-col justify-center items-center gap-1.5">
+              <span className={`w-6 h-0.5 bg-black transition-all ${
+                isMenuOpen ? 'rotate-45 translate-y-2' : ''
+              }`}></span>
+              <span className={`w-6 h-0.5 bg-black transition-all ${
+                isMenuOpen ? 'opacity-0' : ''
+              }`}></span>
+              <span className={`w-6 h-0.5 bg-black transition-all ${
+                isMenuOpen ? '-rotate-45 -translate-y-2' : ''
+              }`}></span>
+            </div>
+          </button>
+        </div>
       </div>
 
       {/* Menu mobile */}
       {isMenuOpen && (
         <div className="absolute top-20 left-0 right-0 md:hidden bg-custom-bg border-t border-[#E5E5E5] shadow-lg">
-          <div className="container py-4 flex flex-col gap-4 px-4">
+          <div className="container mx-auto py-4 flex flex-col gap-4 px-4">
             <Link 
               href="/pourquoi-art" 
               className={`nav-link text-lg ${pathname === '/pourquoi-art' ? 'nav-link-active' : ''}`}
@@ -112,13 +120,6 @@ export default function Navigation() {
               onClick={() => setIsMenuOpen(false)}
             >
               Devenir partenaire
-            </Link>
-            <Link 
-              href="/investir" 
-              className="btn-primary inline-block text-center text-lg"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              INVESTIR
             </Link>
           </div>
         </div>
