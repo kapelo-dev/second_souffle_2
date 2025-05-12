@@ -63,25 +63,13 @@ export default function Navigation() {
 
         {/* Bouton hamburger */}
         <button 
-          className="flex md:hidden items-center justify-center p-2 rounded-lg text-black hover:bg-gray-100 transition-colors absolute right-4 top-1/2 transform -translate-y-1/2"
+          className="flex flex-col md:hidden justify-center items-center w-8 h-8 space-y-1.5"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Menu"
         >
-          <svg 
-            className="w-8 h-8" 
-            fill="none" 
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
-            strokeWidth="2" 
-            viewBox="0 0 24 24" 
-            stroke="currentColor"
-          >
-            {isMenuOpen ? (
-              <path d="M6 18L18 6M6 6l12 12" />
-            ) : (
-              <path d="M4 6h16M4 12h16M4 18h16" />
-            )}
-          </svg>
+          <span className="w-6 h-0.5 bg-black transition-all"></span>
+          <span className="w-6 h-0.5 bg-black transition-all"></span>
+          <span className="w-6 h-0.5 bg-black transition-all"></span>
         </button>
       </div>
 
