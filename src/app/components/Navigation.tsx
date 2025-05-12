@@ -10,59 +10,50 @@ export default function Navigation() {
 
   return (
     <nav className="fixed top-0 w-full bg-custom-bg z-50 border-b border-[#E5E5E5]">
-      <div className="max-w-7xl mx-auto px-4 h-20">
-        <div className="relative flex items-center justify-between h-full">
+      <div className="w-full px-4">
+        <div className="h-20 flex items-center justify-between">
           {/* Logo */}
-          <Link 
-            href="/" 
-            className="text-2xl font-semibold"
-          >
+          <Link href="/" className="text-2xl font-semibold">
             Second Souffle
           </Link>
 
-          {/* Navigation Links - Large Screen Only */}
-          <div className="absolute hidden lg:flex items-center justify-center left-1/2 transform -translate-x-1/2">
-            <Link href="/pourquoi-art" className="nav-link mx-4">Pourquoi l'art</Link>
-            <Link href="/pourquoi-second-souffle" className="nav-link mx-4">Pourquoi Second Souffle</Link>
-            <Link href="/nos-services" className="nav-link mx-4">Nos services</Link>
+          {/* Desktop Links - Hidden on mobile */}
+          <div className="hidden lg:flex items-center gap-8">
+            <div className="flex items-center gap-8">
+              <Link href="/pourquoi-art" className="nav-link">Pourquoi l'art</Link>
+              <Link href="/pourquoi-second-souffle" className="nav-link">Pourquoi Second Souffle</Link>
+              <Link href="/nos-services" className="nav-link">Nos services</Link>
+              <Link href="/devenir-partenaire" className="nav-link">Devenir partenaire</Link>
+              <Link href="/investir" className="btn-primary">INVESTIR</Link>
+            </div>
           </div>
 
-          {/* Right Side Links - Large Screen Only */}
-          <div className="hidden lg:flex items-center space-x-6">
-            <Link href="/devenir-partenaire" className="nav-link">Devenir partenaire</Link>
-            <Link href="/investir" className="btn-primary">INVESTIR</Link>
-          </div>
-
-          {/* Hamburger - Small Screen Only */}
+          {/* Hamburger Button - Visible only on mobile */}
           <button
-            className="flex lg:hidden flex-col justify-center items-center w-8 h-8"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="block lg:hidden"
             aria-label="Menu"
           >
-            <span className={`w-6 h-0.5 bg-black transition-all ${
-              isMenuOpen ? 'rotate-45 translate-y-2' : ''
-            }`}></span>
-            <span className={`w-6 h-0.5 bg-black transition-all my-1 ${
-              isMenuOpen ? 'opacity-0' : ''
-            }`}></span>
-            <span className={`w-6 h-0.5 bg-black transition-all ${
-              isMenuOpen ? '-rotate-45 -translate-y-2' : ''
-            }`}></span>
-          </button>
-
-          {/* Mobile Menu */}
-          {isMenuOpen && (
-            <div className="absolute top-full left-0 right-0 bg-custom-bg border-t border-[#E5E5E5] lg:hidden">
-              <div className="px-4 py-4 space-y-4">
-                <Link href="/pourquoi-art" className="block nav-link">Pourquoi l'art</Link>
-                <Link href="/pourquoi-second-souffle" className="block nav-link">Pourquoi Second Souffle</Link>
-                <Link href="/nos-services" className="block nav-link">Nos services</Link>
-                <Link href="/devenir-partenaire" className="block nav-link">Devenir partenaire</Link>
-                <Link href="/investir" className="block btn-primary text-center">INVESTIR</Link>
-              </div>
+            <div className="w-6 h-5 flex flex-col justify-between">
+              <span className={`w-full h-0.5 bg-black transition-all ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+              <span className={`w-full h-0.5 bg-black transition-all ${isMenuOpen ? 'opacity-0' : ''}`} />
+              <span className={`w-full h-0.5 bg-black transition-all ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
             </div>
-          )}
+          </button>
         </div>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="block lg:hidden border-t border-[#E5E5E5]">
+            <div className="py-4 space-y-4">
+              <Link href="/pourquoi-art" className="block px-4 py-2 nav-link">Pourquoi l'art</Link>
+              <Link href="/pourquoi-second-souffle" className="block px-4 py-2 nav-link">Pourquoi Second Souffle</Link>
+              <Link href="/nos-services" className="block px-4 py-2 nav-link">Nos services</Link>
+              <Link href="/devenir-partenaire" className="block px-4 py-2 nav-link">Devenir partenaire</Link>
+              <Link href="/investir" className="block px-4 py-2 btn-primary text-center">INVESTIR</Link>
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   )
