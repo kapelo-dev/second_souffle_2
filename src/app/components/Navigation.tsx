@@ -10,112 +10,51 @@ export default function Navigation() {
 
   return (
     <nav className="fixed top-0 w-full bg-custom-bg z-50 border-b border-[#E5E5E5]">
-      <div className="container mx-auto h-20 flex items-center justify-between px-4">
-        {/* Logo */}
-        <Link 
-          href="/" 
-          className={`text-2xl md:text-3xl font-sans font-semibold tracking-tight ${
-            pathname === '/' ? 'text-accent' : 'text-custom-text'
-          } hover:text-accent transition-colors duration-300`}
-        >
-          Second Souffle
-        </Link>
+      <div className="max-w-7xl mx-auto px-4 h-20">
+        <div className="flex justify-between items-center h-full">
+          {/* Logo */}
+          <Link 
+            href="/" 
+            className="text-2xl font-semibold"
+          >
+            Second Souffle
+          </Link>
 
-        {/* Navigation desktop */}
-        <div className="hidden md:flex items-center gap-8">
-          <Link 
-            href="/pourquoi-art" 
-            className={`nav-link ${pathname === '/pourquoi-art' ? 'nav-link-active' : ''}`}
-          >
-            Pourquoi l'art
-          </Link>
-          <Link 
-            href="/pourquoi-second-souffle" 
-            className={`nav-link ${pathname === '/pourquoi-second-souffle' ? 'nav-link-active' : ''}`}
-          >
-            Pourquoi Second Souffle
-          </Link>
-          <Link 
-            href="/nos-services" 
-            className={`nav-link ${pathname === '/nos-services' ? 'nav-link-active' : ''}`}
-          >
-            Nos services
-          </Link>
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            <Link href="/pourquoi-art" className="nav-link">Pourquoi l'art</Link>
+            <Link href="/pourquoi-second-souffle" className="nav-link">Pourquoi Second Souffle</Link>
+            <Link href="/nos-services" className="nav-link">Nos services</Link>
+            <Link href="/devenir-partenaire" className="nav-link">Devenir partenaire</Link>
+            <Link href="/investir" className="btn-primary">INVESTIR</Link>
+          </div>
+
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="text-black p-2"
+              aria-label="Menu"
+            >
+              <div className="w-6 h-5 flex flex-col justify-between">
+                <span className={`block h-0.5 w-full bg-black transform transition-transform ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+                <span className={`block h-0.5 w-full bg-black transition-opacity ${isMenuOpen ? 'opacity-0' : ''}`} />
+                <span className={`block h-0.5 w-full bg-black transform transition-transform ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+              </div>
+            </button>
+          </div>
         </div>
-
-        {/* Liens secondaires desktop */}
-        <div className="hidden md:flex items-center gap-6">
-          <Link 
-            href="/devenir-partenaire" 
-            className={`nav-link text-lg ${pathname === '/devenir-partenaire' ? 'nav-link-active' : ''}`}
-          >
-            Devenir partenaire
-          </Link>
-          <Link 
-            href="/investir" 
-            className="btn-primary"
-          >
-            INVESTIR
-          </Link>
-        </div>
-
-        {/* Bouton hamburger */}
-        <button 
-          className="flex md:hidden flex-col justify-center items-center w-8 h-8 z-50"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          aria-label="Menu"
-        >
-          <span className={`w-6 h-0.5 bg-black transition-all ${
-            isMenuOpen ? 'rotate-45 translate-y-2' : ''
-          }`}></span>
-          <span className={`w-6 h-0.5 bg-black transition-all my-1 ${
-            isMenuOpen ? 'opacity-0' : ''
-          }`}></span>
-          <span className={`w-6 h-0.5 bg-black transition-all ${
-            isMenuOpen ? '-rotate-45 -translate-y-2' : ''
-          }`}></span>
-        </button>
       </div>
 
-      {/* Menu mobile */}
+      {/* Mobile menu */}
       {isMenuOpen && (
-        <div className="absolute top-20 left-0 right-0 md:hidden bg-custom-bg border-t border-[#E5E5E5] shadow-lg">
-          <div className="container mx-auto py-4 flex flex-col gap-4 px-4">
-            <Link 
-              href="/pourquoi-art" 
-              className={`nav-link text-lg ${pathname === '/pourquoi-art' ? 'nav-link-active' : ''}`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Pourquoi l'art
-            </Link>
-            <Link 
-              href="/pourquoi-second-souffle" 
-              className={`nav-link text-lg ${pathname === '/pourquoi-second-souffle' ? 'nav-link-active' : ''}`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Pourquoi Second Souffle
-            </Link>
-            <Link 
-              href="/nos-services" 
-              className={`nav-link text-lg ${pathname === '/nos-services' ? 'nav-link-active' : ''}`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Nos services
-            </Link>
-            <Link 
-              href="/devenir-partenaire" 
-              className={`nav-link text-lg ${pathname === '/devenir-partenaire' ? 'nav-link-active' : ''}`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Devenir partenaire
-            </Link>
-            <Link 
-              href="/investir" 
-              className="btn-primary text-lg text-center"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              INVESTIR
-            </Link>
+        <div className="md:hidden">
+          <div className="px-4 pt-2 pb-4 bg-custom-bg border-t border-[#E5E5E5]">
+            <Link href="/pourquoi-art" className="block py-2 nav-link">Pourquoi l'art</Link>
+            <Link href="/pourquoi-second-souffle" className="block py-2 nav-link">Pourquoi Second Souffle</Link>
+            <Link href="/nos-services" className="block py-2 nav-link">Nos services</Link>
+            <Link href="/devenir-partenaire" className="block py-2 nav-link">Devenir partenaire</Link>
+            <Link href="/investir" className="block py-2 btn-primary text-center mt-2">INVESTIR</Link>
           </div>
         </div>
       )}
